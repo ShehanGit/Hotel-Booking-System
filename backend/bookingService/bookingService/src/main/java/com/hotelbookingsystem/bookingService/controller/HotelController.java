@@ -46,6 +46,13 @@ public class HotelController {
         updatedHotel.setLocation(hotelDetails.getLocation());
         updatedHotel.setDescription(hotelDetails.getDescription());
         updatedHotel.setRating(hotelDetails.getRating());
+        updatedHotel.setLatitude(hotelDetails.getLatitude());
+        updatedHotel.setLongitude(hotelDetails.getLongitude());
+        updatedHotel.setAddress(hotelDetails.getAddress());
+        updatedHotel.setCity(hotelDetails.getCity());
+        updatedHotel.setState(hotelDetails.getState());
+        updatedHotel.setCountry(hotelDetails.getCountry());
+        updatedHotel.setPostalCode(hotelDetails.getPostalCode());
 
         hotelRepository.save(updatedHotel);
         return ResponseEntity.ok(updatedHotel);
