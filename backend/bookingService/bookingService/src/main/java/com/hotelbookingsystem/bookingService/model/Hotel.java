@@ -49,4 +49,7 @@ public class Hotel {
 
     @Column(name = "postal_code")
     private String postalCode;
+
+    @Column
+    private String imageUrl;
 }
