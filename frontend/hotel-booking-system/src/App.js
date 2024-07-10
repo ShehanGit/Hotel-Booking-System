@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Flowbite } from 'flowbite-react'; // Import Flowbite
 import './App.css';
 import HomePage from './pages/HomePage';
+import HotelCreate from './pages/adminPages/HotelCreate';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/hotel-create" element={<HotelCreate />} />
           </Routes>
         </Router>
       </Flowbite>

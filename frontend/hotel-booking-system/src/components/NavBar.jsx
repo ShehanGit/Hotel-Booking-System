@@ -8,7 +8,7 @@ const NavBar = () => {
   const { toggleMode } = useThemeMode();
 
   const handleButtonClick = () => {
-    navigate('/dashboard1'); 
+    navigate('/hotel-create'); 
   };
 
   const handleButtonClick2 = () => {
