@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import NavBar from '../../components/NavBar';
 import { SideBar1 } from '../../components/SideBar';
-import '../../css/HotelCreate.css'; 
-import { createHotel } from '../../service/HotelService';
+import '../../css/HotelCreate.css'; // Ensure this is the correct path to your CSS file
+import { createHotel } from '../../service/HotelService'; 
 
 
 function HotelCreate() {
