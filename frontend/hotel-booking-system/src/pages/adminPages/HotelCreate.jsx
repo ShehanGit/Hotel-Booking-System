@@ -1,16 +1,14 @@
 import React, { useState } from 'react';
 import NavBar from '../../components/NavBar';
-import { SideBar1 } from '../../components/SideBar';
 import '../../css/HotelCreate.css'; 
 import { createHotel } from '../../service/HotelService';
-
 
 function HotelCreate() {
     const [hotelData, setHotelData] = useState({
         name: '',
         location: '',
         description: '',
-        rating: '',
+        // rating: '',
         latitude: '',
         longitude: '',
         address: '',
@@ -67,9 +65,9 @@ function HotelCreate() {
         <div className="App">
             <NavBar />
             <div className="hotel-create-form">
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className="form-two-columns">
                     {Object.entries(hotelData).map(([key, value]) => (
-                        <div key={key} className="form-group">
+                        <div key={key} className={`form-group ${key === 'address' || key === 'description' ? 'full-width' : ''}`}>
                             <label htmlFor={key}>{key.charAt(0).toUpperCase() + key.slice(1)}:</label>
                             <input
                                 type={key === 'rating' || key === 'latitude' || key === 'longitude' ? 'number' : key === 'image' ? 'file' : 'text'}
@@ -83,7 +81,6 @@ function HotelCreate() {
                         </div>
                     ))}
                     <button type="submit" className="submit-button">Create Hotel</button>
-                   
                 </form>
             </div>
         </div>
