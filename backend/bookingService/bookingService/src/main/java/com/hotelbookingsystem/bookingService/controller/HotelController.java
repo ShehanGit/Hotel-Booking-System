@@ -44,67 +44,59 @@ public class HotelController {
     @PostMapping
     public ResponseEntity<Hotel> createHotel(@RequestParam("name") String name,
                                              @RequestParam("location") String location,
+                                             @RequestParam("description") String description,
+                                             @RequestParam("rating") Double rating,
+                                             @RequestParam("latitude") Double latitude,
+                                             @RequestParam("longitude") Double longitude,
+                                             @RequestParam("address") String address,
+                                             @RequestParam("city") String city,
+                                             @RequestParam("state") String state,
+                                             @RequestParam("country") String country,
+                                             @RequestParam("postalCode") String postalCode,
                                              @RequestParam("image") MultipartFile file) {
         try {
-            // Log the incoming data
-            System.out.println("Received name: " + name);
-            System.out.println("Received location: " + location);
-            System.out.println("Received file: " + file.getOriginalFilename() + " with size: " + file.getSize());
-
-            // Save the image
             String fileName = storeFile(file);
-            Hotel newHotel = new Hotel();
-            newHotel.setHotelName(name);
-            newHotel.setLocation(location);
-            newHotel.setImageUrl(fileName);
+            Hotel newHotel = new Hotel(null, name, location, description, rating, latitude, longitude, address, city, state, country, postalCode, fileName);
             hotelRepository.save(newHotel);
             return ResponseEntity.ok(newHotel);
         } catch (Exception e) {
-            e.printStackTrace();  // Ensure to print the stack trace for more detailed error info
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
 
-
     @GetMapping("{id}")
     public ResponseEntity<Hotel> getHotelById(@PathVariable Long id) {
-        Hotel hotel = hotelRepository.findById(id)
-                .orElseThrow(() -> new ResourseNotFoundExeption("Hotel not found with id: " + id));
+        Hotel hotel = hotelRepository.findById(id).orElseThrow(() -> new ResourseNotFoundExeption("Hotel not found with id: " + id));
         return ResponseEntity.ok(hotel);
     }
 
     @PutMapping("{id}")
     public ResponseEntity<Hotel> updateHotel(@PathVariable Long id, @RequestBody Hotel hotelDetails) {
-        Hotel updatedHotel = hotelRepository.findById(id)
-                .orElseThrow(() -> new ResourseNotFoundExeption("Hotel not found with id: " + id));
-
-        updatedHotel.setHotelName(hotelDetails.getHotelName());
-        updatedHotel.setLocation(hotelDetails.getLocation());
-        updatedHotel.setDescription(hotelDetails.getDescription());
-        updatedHotel.setRating(hotelDetails.getRating());
-        updatedHotel.setLatitude(hotelDetails.getLatitude());
-        updatedHotel.setLongitude(hotelDetails.getLongitude());
-        updatedHotel.setAddress(hotelDetails.getAddress());
-        updatedHotel.setCity(hotelDetails.getCity());
-        updatedHotel.setState(hotelDetails.getState());
-        updatedHotel.setCountry(hotelDetails.getCountry());
-        updatedHotel.setPostalCode(hotelDetails.getPostalCode());
-
-        hotelRepository.save(updatedHotel);
-        return ResponseEntity.ok(updatedHotel);
+        Hotel existingHotel = hotelRepository.findById(id).orElseThrow(() -> new ResourseNotFoundExeption("Hotel not found with id: " + id));
+        existingHotel.setHotelName(hotelDetails.getHotelName());
+        existingHotel.setLocation(hotelDetails.getLocation());
+        existingHotel.setDescription(hotelDetails.getDescription());
+        existingHotel.setRating(hotelDetails.getRating());
+        existingHotel.setLatitude(hotelDetails.getLatitude());
+        existingHotel.setLongitude(hotelDetails.getLongitude());
+        existingHotel.setAddress(hotelDetails.getAddress());
+        existingHotel.setCity(hotelDetails.getCity());
+        existingHotel.setState(hotelDetails.getState());
+        existingHotel.setCountry(hotelDetails.getCountry());
+        existingHotel.setPostalCode(hotelDetails.getPostalCode());
+        hotelRepository.save(existingHotel);
+        return ResponseEntity.ok(existingHotel);
     }
 
     @DeleteMapping("{id}")
     public ResponseEntity<HttpStatus> deleteHotel(@PathVariable Long id) {
-        Hotel hotel = hotelRepository.findById(id)
-                .orElseThrow(() -> new ResourseNotFoundExeption("Hotel not found with id: " + id));
+        Hotel hotel = hotelRepository.findById(id).orElseThrow(() -> new ResourseNotFoundExeption("Hotel not found with id: " + id));
         hotelRepository.delete(hotel);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     private String storeFile(MultipartFile file) {
         try {
-            // Normalize file name
             String fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
             Path targetLocation = this.fileStorageLocation.resolve(fileName);
             Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
