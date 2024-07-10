@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+// App.js
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Flowbite } from 'flowbite-react'; // Import Flowbite
 import './App.css';
-
 import HomePage from './pages/HomePage';
 
-
-
 function App() {
-
   return (
     <div className="App">
-      <Router>
-        <Routes>
-          <Route exact path="/" element={<HomePage />} />
-        </Routes>
-      </Router>
+      <Flowbite> {/* Wrap your application with Flowbite */}
+        <Router>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+          </Routes>
+        </Router>
+      </Flowbite>
     </div>
   );
 }
