@@ -83,6 +83,7 @@ function HotelCreate() {
                         </div>
                     ))}
                     <button type="submit" className="submit-button">Create Hotel</button>
+                   
                 </form>
             </div>
         </div>
