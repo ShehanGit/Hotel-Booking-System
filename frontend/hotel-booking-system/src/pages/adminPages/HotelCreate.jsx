@@ -66,7 +66,6 @@ function HotelCreate() {
     return (
         <div className="App">
             <NavBar />
-            <SideBar1 />
             <div className="hotel-create-form">
                 <form onSubmit={handleSubmit}>
                     {Object.entries(hotelData).map(([key, value]) => (
