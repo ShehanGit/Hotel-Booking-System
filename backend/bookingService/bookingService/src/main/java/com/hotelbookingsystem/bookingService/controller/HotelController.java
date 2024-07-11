@@ -45,7 +45,7 @@ public class HotelController {
     public ResponseEntity<Hotel> createHotel(@RequestParam("name") String name,
                                              @RequestParam("location") String location,
                                              @RequestParam("description") String description,
-                                             @RequestParam("rating") Double rating,
+                                             @RequestParam(value = "rating", required = false) Double rating, // Set as optional
                                              @RequestParam("latitude") Double latitude,
                                              @RequestParam("longitude") Double longitude,
                                              @RequestParam("address") String address,
@@ -56,13 +56,16 @@ public class HotelController {
                                              @RequestParam("image") MultipartFile file) {
         try {
             String fileName = storeFile(file);
-            Hotel newHotel = new Hotel(null, name, location, description, rating, latitude, longitude, address, city, state, country, postalCode, fileName);
+            // Set rating to 0 if it is null or explicitly set it to 0 to ignore incoming values
+            double effectiveRating = (rating == null) ? 0 : rating;
+            Hotel newHotel = new Hotel(null, name, location, description, effectiveRating, latitude, longitude, address, city, state, country, postalCode, fileName);
             hotelRepository.save(newHotel);
             return ResponseEntity.ok(newHotel);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
+
 
     @GetMapping("{id}")
     public ResponseEntity<Hotel> getHotelById(@PathVariable Long id) {
