@@ -5,6 +5,8 @@ import { Flowbite } from 'flowbite-react'; // Import Flowbite
 import './App.css';
 import HomePage from './pages/HomePage';
 import HotelCreate from './pages/adminPages/HotelCreate';
+import HotelList from './pages/adminPages/HotelList';
+
 
 function App() {
   return (
@@ -14,6 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/hotel-create" element={<HotelCreate />} />
+            <Route path="/hotels" element={<HotelList />} />
           </Routes>
         </Router>
       </Flowbite>
