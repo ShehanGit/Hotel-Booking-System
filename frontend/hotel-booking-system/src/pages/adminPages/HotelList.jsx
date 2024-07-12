@@ -33,17 +33,29 @@ function HotelList() {
                             <img src={`http://localhost:8080/hotels/download/${hotel.imageUrl}`} alt="Hotel" />
                         </div>
                         <div className="hotel-details">
-                            <h2 >{hotel.hotelName}</h2>
-                            <div className="rating">{renderStars(hotel.stars)}</div>
-
-                            <p><strong>Location:</strong> {hotel.location}</p>
-                            <p><strong>Price:</strong> {hotel.price}</p>
-                            <p><strong>Price:</strong> {hotel.price}</p> 
-                            <p><strong>Rating:</strong> {hotel.rating}</p> 
-                            
-                            {/* <p><strong>Address:</strong> {hotel.address}, {hotel.city}, {hotel.state}, {hotel.country}, {hotel.postalCode}</p> */}
-
+                            <div className="hotel-header">
+                                <h2>{hotel.hotelName}</h2>
+                                <div className="rating">{renderStars(hotel.stars)}</div>
+                                <div className="review-score">
+                                    <span className="score">{hotel.rating}</span>
+                                    <span className="reviews">Good<br />{hotel.reviews} reviews</span>
+                                </div>
+                            </div>
+                            {/* <div className="location">
+                                <a href="#">{hotel.city}, {hotel.country}</a> • <span>{hotel.distanceToCenter} m from centre</span>
+                            </div> */}
+                            <div className="features">
+                                <p><strong>Features:</strong> {hotel.features}</p>
+                            </div>
                             <p>{hotel.description}</p>
+                            <div className="booking-info">
+                                <p><strong>Free cancellation</strong></p>
+                                <p><strong>No prepayment needed – pay at the property</strong></p>
+                            </div>
+                            <div className="price-info">
+                                <span className="price">LKR {hotel.price}</span> + LKR {hotel.taxes} taxes and charges
+                            </div>
+                            <button className="availability-button">See availability</button>
                         </div>
                     </li>
                 ))}
