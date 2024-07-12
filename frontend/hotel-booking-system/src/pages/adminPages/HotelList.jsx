@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 function HotelList() {
     const [hotels, setHotels] = useState([]);
-    const navigate = useNavigate(); // Use useNavigate hook from react-router-dom
+    const navigate = useNavigate(); 
 
     useEffect(() => {
         axios.get('http://localhost:8080/hotels')

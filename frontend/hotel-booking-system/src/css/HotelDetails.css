@@ -1,50 +1,107 @@
 .hotel-details-container {
     max-width: 1200px;
-    margin: 20px auto;
+    margin: 0 auto;
     padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    background-color: #f9f9f9;
 }
 
-.hotel-name {
-    font-size: 2.5em;
-    color: #333;
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.hotel-image img {
+.hero-section {
+    position: relative;
     width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 20px;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 10px;
 }
 
-.hotel-info {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+.hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
-.info-block {
-    flex: 1 1 300px;
-    margin-bottom: 20px;
+.hero-text {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 10px 20px;
+    border-radius: 5px;
 }
 
-.info-title {
-    font-weight: bold;
-    color: #555;
-    margin-bottom: 5px;
-}
-
-.info-title::after {
-    content: ':';
-}
-
-p {
+.hero-text h1 {
     margin: 0;
+    font-size: 2.5em;
+}
+
+.hero-text p {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.details-section {
+    display: flex;
+    margin-top: 20px;
+}
+
+.sidebar {
+    flex: 1;
+    background-color: #fff;
+    padding: 20px;
+    margin-right: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-item {
+    margin-bottom: 20px;
+}
+
+.sidebar-item h2 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+.sidebar-item p {
+    margin: 5px 0 0;
+    font-size: 1.2em;
     color: #777;
 }
 
-@media (max-width: 768
+.booking-button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 90px;
+    font-size: 1.2em;
+    color: #fff;
+    background-color: #314985;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.main-details {
+    flex: 2;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.info-block {
+    margin-bottom: 20px;
+}
+
+.info-block h2 {
+    margin-bottom: 10px;
+    font-size: 1.8em;
+    color: #333;
+}
+
+.info-block p {
+    margin: 0;
+    font-size: 1.2em;
+    color: #555;
+}
