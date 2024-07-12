@@ -2,9 +2,11 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import NavBar from '../../components/NavBar';
 import '../../css/HotelList.css'; 
+import { useNavigate } from 'react-router-dom';
 
 function HotelList() {
     const [hotels, setHotels] = useState([]);
+    const navigate = useNavigate(); // Use useNavigate hook from react-router-dom
 
     useEffect(() => {
         axios.get('http://localhost:8080/hotels')
@@ -28,7 +30,7 @@ function HotelList() {
             <NavBar />
             <ul className="hotel-list">
                 {hotels.map(hotel => (
-                    <li key={hotel.id} className="hotel-item">
+                    <li key={hotel.hotelId} className="hotel-item">
                         <div className="hotel-image">
                             <img src={`http://localhost:8080/hotels/download/${hotel.imageUrl}`} alt="Hotel" />
                         </div>
@@ -55,7 +57,9 @@ function HotelList() {
                             <div className="price-info">
                                 <span className="price">LKR {hotel.price}</span> + LKR {hotel.taxes} taxes and charges
                             </div>
-                            <button className="availability-button">See availability</button>
+                            <button className="availability-button" onClick={() => navigate(`/hotel-details/${hotel.hotelId}`)}>
+                                See availability
+                            </button>
                         </div>
                     </li>
                 ))}
