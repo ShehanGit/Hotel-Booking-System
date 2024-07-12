@@ -8,7 +8,6 @@ function HotelCreate() {
         name: '',
         location: '',
         description: '',
-        // rating: '',
         latitude: '',
         longitude: '',
         address: '',
@@ -16,7 +15,10 @@ function HotelCreate() {
         state: '',
         country: '',
         postalCode: '',
-        image: null
+        image: null,
+        features: '',
+        price: '',
+        stars: ''
     });
     const [errors, setErrors] = useState({});
 
@@ -70,7 +72,7 @@ function HotelCreate() {
                         <div key={key} className={`form-group ${key === 'address' || key === 'description' ? 'full-width' : ''}`}>
                             <label htmlFor={key}>{key.charAt(0).toUpperCase() + key.slice(1)}:</label>
                             <input
-                                type={key === 'rating' || key === 'latitude' || key === 'longitude' ? 'number' : key === 'image' ? 'file' : 'text'}
+                                type={key === 'price' || key === 'latitude' || key === 'longitude' || key === 'stars' ? 'number' : key === 'image' ? 'file' : 'text'}
                                 id={key}
                                 name={key}
                                 value={key !== 'image' ? value : undefined}

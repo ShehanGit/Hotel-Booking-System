@@ -1,14 +1,14 @@
 .hotel-list {
     list-style-type: none;
     padding: 0;
-    margin: 20px 50px; /* Increased horizontal margin for better spacing */
+    margin: 20px 200px; /* Increased horizontal margin for better spacing */
 }
 
 .hotel-item {
     display: flex;
     align-items: flex-start; /* Align items from the top to handle varying content sizes */
     margin-bottom: 20px;
-    background-color: #02142c;
+    /* background-color: #02142c; */
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -24,12 +24,12 @@
 .hotel-details {
     padding: 20px;
     flex: 1;
-    color: #ffffff; /* Ensuring text color is white for readability */
+    color: #000000; /* Ensuring text color is white for readability */
 }
 
 .hotel-details h2 {
-    font-size: 24px; 
-    color: #ffffff; /* Dark blue color for a more professional look */
+    font-size: 28px; 
+    color: #09083b; /* Dark blue color for a more professional look */
     font-family: 'Roboto', BlinkMacSystemFont, -apple-system, Segoe UI, Helvetica, Arial, sans-serif; /* Roboto as a fallback to Blue Sans */
     font-weight: 500; /* Medium weight for better visibility */
 }
@@ -40,18 +40,21 @@
 }
 
 .rating {
-    display: inline-block; /* Ensure the ratings are laid out inline */
-    color: gold; /* Gold color for filled stars */
-    margin-bottom: 10px; /* Space below the rating */
+    display: inline-block; 
+    color: rgb(75, 4, 4); 
+    margin-bottom: 10px; 
+    
 }
 
 .star {
     color: gray; /* Default color for unfilled stars */
+    font-size: 24px;
 }
 
 .star.filled {
-    color: gold; /* Gold color for filled stars */
-    text-shadow: 0 0 5px #ffc107; /* Soft glow for filled stars */
+    color: rgb(28, 14, 226); /* Gold color for filled stars */
+    /* text-shadow: 0 0 5px #201de2;  */
+    font-size: 24px;
 }
 
 @media (max-width: 600px) {

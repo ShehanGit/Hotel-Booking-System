@@ -34,11 +34,14 @@ function HotelList() {
                         </div>
                         <div className="hotel-details">
                             <h2 >{hotel.hotelName}</h2>
-                            <div className="rating">{renderStars(hotel.rating)}</div>
+                            <div className="rating">{renderStars(hotel.stars)}</div>
 
                             <p><strong>Location:</strong> {hotel.location}</p>
-
-                            <p><strong>Address:</strong> {hotel.address}, {hotel.city}, {hotel.state}, {hotel.country}, {hotel.postalCode}</p>
+                            <p><strong>Price:</strong> {hotel.price}</p>
+                            <p><strong>Price:</strong> {hotel.price}</p> 
+                            <p><strong>Rating:</strong> {hotel.rating}</p> 
+                            
+                            {/* <p><strong>Address:</strong> {hotel.address}, {hotel.city}, {hotel.state}, {hotel.country}, {hotel.postalCode}</p> */}
 
                             <p>{hotel.description}</p>
                         </div>

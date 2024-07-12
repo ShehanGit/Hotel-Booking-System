@@ -45,7 +45,7 @@ public class HotelController {
     public ResponseEntity<Hotel> createHotel(@RequestParam("name") String name,
                                              @RequestParam("location") String location,
                                              @RequestParam("description") String description,
-                                             @RequestParam(value = "rating", required = false) Double rating, // Set as optional
+                                             @RequestParam(value = "rating", required = false) Double rating,
                                              @RequestParam("latitude") Double latitude,
                                              @RequestParam("longitude") Double longitude,
                                              @RequestParam("address") String address,
@@ -53,19 +53,21 @@ public class HotelController {
                                              @RequestParam("state") String state,
                                              @RequestParam("country") String country,
                                              @RequestParam("postalCode") String postalCode,
-                                             @RequestParam("image") MultipartFile file) {
+                                             @RequestParam("image") MultipartFile file,
+                                             @RequestParam("features") String features,
+                                             @RequestParam("price") Double price,
+                                             @RequestParam("stars") Integer stars) { // Change to Integer
         try {
             String fileName = storeFile(file);
             // Set rating to 0 if it is null or explicitly set it to 0 to ignore incoming values
             double effectiveRating = (rating == null) ? 0 : rating;
-            Hotel newHotel = new Hotel(null, name, location, description, effectiveRating, latitude, longitude, address, city, state, country, postalCode, fileName);
+            Hotel newHotel = new Hotel(null, name, location, description, effectiveRating, latitude, longitude, address, city, state, country, postalCode, fileName, features, price, stars);
             hotelRepository.save(newHotel);
             return ResponseEntity.ok(newHotel);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
-
 
     @GetMapping("{id}")
     public ResponseEntity<Hotel> getHotelById(@PathVariable Long id) {
@@ -87,6 +89,10 @@ public class HotelController {
         existingHotel.setState(hotelDetails.getState());
         existingHotel.setCountry(hotelDetails.getCountry());
         existingHotel.setPostalCode(hotelDetails.getPostalCode());
+        existingHotel.setImageUrl(hotelDetails.getImageUrl());
+        existingHotel.setFeatures(hotelDetails.getFeatures());
+        existingHotel.setPrice(hotelDetails.getPrice());
+        existingHotel.setStars(hotelDetails.getStars());
         hotelRepository.save(existingHotel);
         return ResponseEntity.ok(existingHotel);
     }
