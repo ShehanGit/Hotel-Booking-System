@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import NavBar from '../../components/NavBar';
-import '../../css/HotelCreate.css'; 
+import '../../css/Booking.css'; 
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 function Booking() {
     const { hotelId, userId } = useParams();
@@ -11,13 +13,17 @@ function Booking() {
             userId: userId
         },
         room: {
-            roomId: hotelId // assuming hotelId is the same as roomId for this example
+            roomId: hotelId // Remember to change this as needed
         },
         checkInDate: '',
         checkOutDate: '',
         numberOfGuests: 1,
         status: 'pending'
     });
+
+    const handleDateChange = (date, name) => {
+        setBookingData(prev => ({ ...prev, [name]: date }));
+    };
 
     const handleChange = e => {
         const { name, value } = e.target;
@@ -45,45 +51,46 @@ function Booking() {
     return (
         <div>
             <NavBar />
-            <div className="booking-form">
+            <div className="booking-form-container">
                 <h2>Create Booking for Hotel ID: {hotelId} and User ID: {userId}</h2>
-                <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <label htmlFor="checkInDate">Check-In Date:</label>
-                        <input
-                            type="date"
-                            id="checkInDate"
-                            name="checkInDate"
-                            value={bookingData.checkInDate}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="checkOutDate">Check-Out Date:</label>
-                        <input
-                            type="date"
-                            id="checkOutDate"
-                            name="checkOutDate"
-                            value={bookingData.checkOutDate}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="numberOfGuests">Number of Guests:</label>
-                        <input
-                            type="number"
-                            id="numberOfGuests"
-                            name="numberOfGuests"
-                            value={bookingData.numberOfGuests}
-                            onChange={handleChange}
-                            min="1"
-                            required
-                        />
-                    </div>
-                    <button type="submit" className="submit-button">Create Booking</button>
-                </form>
+                <div className="booking-form">
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-row">
+                            <div className="form-group">
+                                <label htmlFor="checkInDate">Check-In Date:</label>
+                                <DatePicker
+                                    selected={bookingData.checkInDate}
+                                    onChange={(date) => handleDateChange(date, 'checkInDate')}
+                                    dateFormat="yyyy-MM-dd"
+                                    inline
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="checkOutDate">Check-Out Date:</label>
+                                <DatePicker
+                                    selected={bookingData.checkOutDate}
+                                    onChange={(date) => handleDateChange(date, 'checkOutDate')}
+                                    dateFormat="yyyy-MM-dd"
+                                    inline
+                                />
+                            </div>
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="numberOfGuests">Number of Guests:</label>
+                            <input
+                                type="number"
+                                id="numberOfGuests"
+                                name="numberOfGuests"
+                                value={bookingData.numberOfGuests}
+                                onChange={handleChange}
+                                min="1"
+                                className="form-control"
+                                required
+                            />
+                        </div>
+                        <button type="submit" className="submit-button">Create Booking</button>
+                    </form>
+                </div>
             </div>
         </div>
     );
