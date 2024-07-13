@@ -75,20 +75,22 @@ function Booking() {
                                 />
                             </div>
                         </div>
-                        <div className="form-group">
-                            <label htmlFor="numberOfGuests">Number of Guests:</label>
-                            <input
-                                type="number"
-                                id="numberOfGuests"
-                                name="numberOfGuests"
-                                value={bookingData.numberOfGuests}
-                                onChange={handleChange}
-                                min="1"
-                                className="form-control"
-                                required
-                            />
+                        <div className="number-of-guests-group">
+                            <div className="form-group">
+                                <label htmlFor="numberOfGuests">Number of Guests:</label>
+                                <input
+                                    type="number"
+                                    id="numberOfGuests"
+                                    name="numberOfGuests"
+                                    value={bookingData.numberOfGuests}
+                                    onChange={handleChange}
+                                    min="1"
+                                    className="form-control"
+                                    required
+                                />
+                            </div>
+                            <button type="submit" className="submit-button">Create Booking</button>
                         </div>
-                        <button type="submit" className="submit-button">Create Booking</button>
                     </form>
                 </div>
             </div>

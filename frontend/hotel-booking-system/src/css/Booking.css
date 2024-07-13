@@ -52,9 +52,8 @@
     font-size: 1.1rem;
     font-weight: 600;
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    align-self: flex-end;
-    margin-top: 20px;
-    width: 100%;
+    width: auto;
+    align-self: center;
 }
 
 .submit-button:hover {
@@ -127,7 +126,7 @@
 }
 
 .submit-button {
-    background-color: #28a745;
+    background-color: #314985;
     color: #fff;
     border: none;
     padding: 10px 20px;
@@ -139,7 +138,7 @@
 }
 
 .submit-button:hover {
-    background-color: #218838;
+    background-color: #122350;
 }
 
 @media (max-width: 600px) {
@@ -156,5 +155,26 @@
 .react-datepicker__month-container {
     float: left;
     width: 100%;
-    
+}
+
+/* Additional styles for horizontal alignment */
+.form-row-horizontal {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.number-of-guests-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.number-of-guests-group .form-group {
+    flex: 1;
+}
+
+.number-of-guests-group .submit-button {
+    flex-shrink: 0;
 }
