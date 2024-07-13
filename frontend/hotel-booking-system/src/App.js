@@ -20,7 +20,7 @@ function App() {
             <Route path="/hotel-create" element={<HotelCreate />} />
             <Route path="/hotels" element={<HotelList />} />
             <Route path="/hotel-details/:id" element={<HotelDetails />} />
-            <Route path="/booking/:id" element={<Booking />} />
+            <Route path="/booking/:hotelId/:userId" element={<Booking />} />
           </Routes>
         </Router>
       </Flowbite>

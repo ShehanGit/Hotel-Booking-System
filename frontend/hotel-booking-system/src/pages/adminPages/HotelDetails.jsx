@@ -50,7 +50,7 @@ function HotelDetails() {
                             <h2>Stars</h2>
                             <p>{hotel.stars} ★</p>
                         </div>
-                        <button className="booking-button" onClick={() => navigate(`/booking/${hotel.hotelId}`)}>
+                        <button className="booking-button" onClick={() => navigate(`/booking/${hotel.hotelId}/1`)}>
                             Book Now
                         </button>
                     </div>
