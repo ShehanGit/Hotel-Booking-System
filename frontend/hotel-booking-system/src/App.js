@@ -8,6 +8,7 @@ import HotelCreate from './pages/adminPages/HotelCreate';
 import HotelList from './pages/adminPages/HotelList';
 import HotelDetails from './pages/adminPages/HotelDetails';
 import Booking from './pages/adminPages/Booking';
+import Payment from './pages/adminPages/Payment';
 
 
 function App() {
@@ -21,6 +22,8 @@ function App() {
             <Route path="/hotels" element={<HotelList />} />
             <Route path="/hotel-details/:id" element={<HotelDetails />} />
             <Route path="/booking/:hotelId/:userId" element={<Booking />} />
+            <Route path="/payment/:hotelId/:userId" element={<Payment />} />
+            
           </Routes>
         </Router>
       </Flowbite>

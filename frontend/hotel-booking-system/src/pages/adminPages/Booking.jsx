@@ -5,10 +5,15 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { useNavigate } from 'react-router-dom';
+
 
 function Booking() {
     const { hotelId, userId } = useParams();
+    const navigate = useNavigate(); 
+
     const [bookingData, setBookingData] = useState({
+        
         user: {
             userId: userId
         },
@@ -89,7 +94,9 @@ function Booking() {
                                     required
                                 />
                             </div>
-                            <button type="submit" className="submit-button">Create Booking</button>
+                            <button className="submit-button" onClick={() => navigate(`/payment/${hotelId}/1`)}>
+                                Create Booking
+                            </button>
                         </div>
                     </form>
                 </div>
