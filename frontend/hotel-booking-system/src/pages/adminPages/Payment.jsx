@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
 import NavBar from '../../components/NavBar';
-import '../../css/HotelList.css'; 
-import { useNavigate } from 'react-router-dom';
 
-function Payment() {
-   
+const stripePromise = loadStripe('pk_test_51PcMEzKr4aZoYRvRMiHmcXsmbW70tPO6LKD1hyjbouf17iZZZ1gVfbEbrSTzNRRJOGLDuB9hFTFIxZqy0hYYpjbL00t1skr5NG');
 
+function PaymentPage() {
     return (
-        <div>
+        <div className="payment-page">
             <NavBar />
-            <h1>Payment</h1>
+            <Elements stripe={stripePromise}>
+            </Elements>
         </div>
     );
 }
 
-export default Payment;
+export default PaymentPage;

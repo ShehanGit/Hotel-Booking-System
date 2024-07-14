@@ -1,62 +1,55 @@
 package com.hotelbookingsystem.bookingService.controller;
 
-import com.hotelbookingsystem.bookingService.model.Payment;
-import com.hotelbookingsystem.bookingService.repository.PaymentRepository;
-import com.hotelbookingsystem.bookingService.exception.ResourseNotFoundExeption;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import com.hotelbookingsystem.bookingService.model.PaymentRequest;
+import com.stripe.Stripe;
+import com.stripe.exception.StripeException;
+import com.stripe.model.checkout.Session;
+import com.stripe.param.checkout.SessionCreateParams;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
-@RequestMapping("/payments")
+@RequestMapping("/payment")
 public class PaymentController {
 
-    @Autowired
-    private PaymentRepository paymentRepository;
+    @Value("${stripe.api.key}")
+    private String stripeApiKey;
 
-    @GetMapping
-    public List<Payment> getAllPayments() {
-        return paymentRepository.findAll();
-    }
+    @PostMapping("/create-checkout-session")
+    public String createCheckoutSession(@RequestBody PaymentRequest paymentRequest) {
+        Stripe.apiKey = stripeApiKey;
 
-    @PostMapping
-    public Payment createPayment(@RequestBody Payment payment) {
-        return paymentRepository.save(payment);
-    }
+        SessionCreateParams params = SessionCreateParams.builder()
+                .setMode(SessionCreateParams.Mode.PAYMENT)
+                .setSuccessUrl("http://localhost:3000/success")
+                .setCancelUrl("http://localhost:3000/cancel")
+                .addLineItem(
+                        SessionCreateParams.LineItem.builder()
+                                .setQuantity(paymentRequest.getQuantity())
+                                .setPriceData(
+                                        SessionCreateParams.LineItem.PriceData.builder()
+                                                .setCurrency("usd")
+                                                .setUnitAmount(paymentRequest.getAmount())
+                                                .setProductData(
+                                                        SessionCreateParams.LineItem.PriceData.ProductData.builder()
+                                                                .setName(paymentRequest.getDescription())
+                                                                .build()
+                                                )
+                                                .build()
+                                )
+                                .build()
+                )
+                .build();
 
-    @GetMapping("{id}")
-    public ResponseEntity<Payment> getPaymentById(@PathVariable Long id) {
-        Payment payment = paymentRepository.findById(id).orElseThrow(
-                () -> new ResourseNotFoundExeption("Payment not found with id: " + id)
-        );
-        return ResponseEntity.ok(payment);
-    }
-
-    @PutMapping("{id}")
-    public ResponseEntity<Payment> updatePayment(@PathVariable Long id, @RequestBody Payment paymentDetails) {
-        Payment updatedPayment = paymentRepository.findById(id).orElseThrow(
-                () -> new ResourseNotFoundExeption("Payment not found with id: " + id)
-        );
-
-        updatedPayment.setPaymentId(paymentDetails.getPaymentId());
-        updatedPayment.setAmount(paymentDetails.getAmount());
-        updatedPayment.setPaymentMethod(paymentDetails.getPaymentMethod());
-        updatedPayment.setPaymentStatus(paymentDetails.getPaymentStatus());
-
-        paymentRepository.save(updatedPayment);
-        return ResponseEntity.ok(updatedPayment);
-    }
-
-    @DeleteMapping("{id}")
-    public ResponseEntity<HttpStatus> deletePayment(@PathVariable Long id) {
-        Payment payment = paymentRepository.findById(id).orElseThrow(
-                () -> new ResourseNotFoundExeption("Payment not found with id: " + id)
-        );
-        paymentRepository.delete(payment);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        try {
+            Session session = Session.create(params);
+            return session.getUrl();
+        } catch (StripeException e) {
+            e.printStackTrace();
+            return "Error: " + e.getMessage();
+        }
     }
 }
+
