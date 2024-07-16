@@ -1,82 +1,95 @@
-<<<<<<< HEAD
-.App {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-
-.content {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start; /* Adjust this if you want them aligned at the top */
-    width: 100%;
-    padding: 20px;
-}
-
 .hotel-create-form {
-    flex: 1;
-    max-width: 600px;
-    margin: 20px;
+    max-width: 900px;
+    margin: 20px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: #2c3a4ed3; /* Changed background color to blue */
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-.SideBar1 {
-    flex: 1;
-    padding: 20px;
-    /* Define more styles if necessary */
-}
-
-.form-group {
+    position: relative; /* Add this line */
+    left: 200px; /* Add this line */
+  }
+  .form-group {
     margin-bottom: 15px;
-}
-
-.form-group label {
+  }
+  
+  .form-group label {
     display: block;
     margin-bottom: 5px;
-    color: #333;
+    color: #fffefe;
     font-weight: bold;
-}
-
-.form-control {
+  }
+  
+  .form-control {
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-}
-
-.form-control[type="file"] {
+  }
+  
+  .form-control[type="file"] {
     padding: 5px;
     background: #f8f8f8;
-}
-
-.is-invalid {
+  }
+  
+  .image-upload-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+  
+  .image-upload-button {
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  .image-upload-label {
+    margin-left: 10px;
+    font-size: 16px;
+    color: #ffffff;
+  }
+  
+  .is-invalid {
     border-color: #dc3545;
-}
-
-.error-message {
+  }
+  
+  .error-message {
     color: #dc3545;
     font-size: 0.85rem;
     margin-top: 5px;
-}
-
-.submit-button {
+  }
+  
+  .submit-button {
     width: 100%;
     padding: 10px;
+    margin-top: 28px;
+    height: 52px;
     background-color: #007bff;
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-weight: bold;
-}
-
-.submit-button:hover {
+  }
+  
+  .submit-button:hover {
     background-color: #0056b3;
-}
-=======
->>>>>>> parent of ccf82ff (hotel create form created sucsesfully)
+  }
+  
+  .hotel-create-form .form-two-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+  }
+  
+  .hotel-create-form .full-width {
+      grid-column: 1 / -1;
+  }

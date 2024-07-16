@@ -1,0 +1,149 @@
+.hotel-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px auto;
+    max-width: 1000px;
+}
+
+.hotel-item {
+    display: flex;
+    margin-bottom: 20px;
+    background-color: #5e5e5e18;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.226);
+    transition: transform 0.3s;
+}
+
+.hotel-item:hover {
+    transform: scale(1.02);
+}
+
+.hotel-image img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 10px;
+}
+
+.hotel-details {
+    padding: 20px;
+    flex: 1;
+    color: #000;
+    position: relative; /* Ensure the button can be positioned relative to this div */
+}
+
+.hotel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.hotel-header h2 {
+    font-size: 22px; 
+    color: #333;
+    margin: 0;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+}
+
+.star {
+    color: gray;
+    font-size: 20px;
+}
+
+.star.filled {
+    color: gold;
+    font-size: 25px;
+}
+
+.review-score {
+    text-align: right;
+    font-size: 14px;
+    color: #0071c2;
+}
+
+.review-score .score {
+    font-size: 22px;
+    font-weight: bold;
+    color: #0071c2;
+    margin-right: 5px;
+}
+
+.location {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.location a {
+    color: #0071c2;
+    text-decoration: none;
+}
+
+.location a:hover {
+    text-decoration: underline;
+}
+
+.features {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.booking-info {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #28a745;
+}
+
+.price-info {
+    margin-top: 10px;
+    font-size: 20px;
+    color: #444;
+}
+
+.availability-button {
+    position: absolute; /* Position the button absolutely */
+    right: 20px; /* Align the button to the right */
+    bottom: 20px; /* Align the button to the bottom */
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #0071c2;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.availability-button:hover {
+    background-color: #005a9c;
+}
+
+@media (max-width: 768px) {
+    .hotel-item {
+        flex-direction: column;
+    }
+
+    .hotel-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px 8px 0 0;
+        margin: 0;
+    }
+
+    .hotel-details {
+        padding: 15px;
+    }
+
+    .availability-button {
+        position: static; /* Reset position for mobile view */
+        margin-top: 10px;
+    }
+}

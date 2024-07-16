@@ -31,14 +31,12 @@ const NavBar = () => {
         
 
         <Navbar.Collapse>
-          <Navbar.Link href="/" active>
-            Home
-          </Navbar.Link>
-          <Navbar.Link href="#">About</Navbar.Link>
-          <Navbar.Link href="#">Services</Navbar.Link>
-          <Navbar.Link href="/map">Map</Navbar.Link>
-          <Navbar.Link href="#">Contact</Navbar.Link>
-        </Navbar.Collapse>
+      <Navbar.Link href="/" active style={{ fontSize: '1.25rem' }}>Home</Navbar.Link>
+      <Navbar.Link href="/hotels" style={{ fontSize: '1.25rem' }}>Hotels</Navbar.Link>
+      <Navbar.Link href="#" style={{ fontSize: '1.25rem' }}>About</Navbar.Link>
+      <Navbar.Link href="/map" style={{ fontSize: '1.25rem' }}>Map</Navbar.Link>
+      <Navbar.Link href="#" style={{ fontSize: '1.25rem' }}>Contact</Navbar.Link>
+    </Navbar.Collapse>
 
         <div className="flex md:order-2">
               <DarkThemeToggle onClick={toggleMode} className="mr-2" />

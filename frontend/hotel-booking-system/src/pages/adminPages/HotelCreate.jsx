@@ -1,122 +1,92 @@
 import React, { useState } from 'react';
 import NavBar from '../../components/NavBar';
-import { SideBar1 } from '../../components/SideBar';
-<<<<<<< HEAD
-import '../../css/HotelCreate.css'; // Ensure this is the correct path to your CSS file
-import { createHotel } from '../../service/HotelService'; 
-
-=======
-import '../../css/HotelCreate.css';
-import { createHotel } from '../../service/HotelService';  // This service should handle API POST requests
->>>>>>> parent of ccf82ff (hotel create form created sucsesfully)
+import '../../css/HotelCreate.css'; 
+import { createHotel } from '../../service/HotelService';
 
 function HotelCreate() {
-  const [hotelName, setHotelName] = useState('');
-  const [location, setLocation] = useState('');
-  const [image, setImage] = useState(null);
-  const [errors, setErrors] = useState({});
+    const [hotelData, setHotelData] = useState({
+        name: '',
+        location: '',
+        description: '',
+        latitude: '',
+        longitude: '',
+        address: '',
+        city: '',
+        state: '',
+        country: '',
+        postalCode: '',
+        image: null,
+        features: '',
+        price: '',
+        stars: ''
+    });
+    const [errors, setErrors] = useState({});
 
-  const validateForm = () => {
-    let isValid = true;
-    const newErrors = {};
+    const handleChange = e => {
+        const { name, value } = e.target;
+        setHotelData(prev => ({ ...prev, [name]: value }));
+    };
 
-    if (!hotelName) {
-      newErrors.hotelName = "Hotel name is required";
-      isValid = false;
-    }
-    if (!location) {
-      newErrors.location = "Location is required";
-      isValid = false;
-    }
-    if (!image) {
-      newErrors.image = "Image is required";
-      isValid = false;
-    }
+    const handleFileChange = e => {
+        setHotelData(prev => ({ ...prev, image: e.target.files[0] }));
+    };
 
-    setErrors(newErrors);
-    return isValid;
-  };
+    const validateForm = () => {
+        let newErrors = {};
+        let isValid = true;
+        Object.entries(hotelData).forEach(([key, value]) => {
+            if (!value && key !== 'image') {
+                newErrors[key] = `${key.charAt(0).toUpperCase() + key.slice(1)} is required`;
+                isValid = false;
+            }
+        });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (validateForm()) {
-      const formData = new FormData();
-      formData.append('name', hotelName);
-      formData.append('location', location);
-      formData.append('image', image);
+        setErrors(newErrors);
+        return isValid;
+    };
 
-      createHotel(formData).then(response => {
-        console.log(response.data);
-      }).catch(err => {
-        console.error(err);
-      });
-    }
-  };
+    const handleSubmit = async e => {
+        e.preventDefault();
+        if (!validateForm()) return;
 
-  const handleImageChange = (e) => {
-    setImage(e.target.files[0]);
-  };
+        const formData = new FormData();
+        Object.entries(hotelData).forEach(([key, value]) => {
+            formData.append(key, value);
+        });
 
-  return (
-    <div className="App">
-      <NavBar />
-      <div style={{ display: "flex" }}>
-        <SideBar1 style={{ flex: "0 0 250px" }} />
-        <div className="center-container">
-          <div className="container1">
-            <form className="p-6" onSubmit={handleSubmit}>
-              <div className="grid gap-6 mb-6 md:grid-cols-2">
-                <div className="md:col-span-2">
-                  <label htmlFor="hotelName" className="block mb-2 text-lg font-medium text-left text-white">
-                    Hotel Name
-                  </label>
-                  <input
-                    type="text"
-                    id="hotelName"
-                    className="input-field"
-                    value={hotelName}
-                    onChange={(e) => setHotelName(e.target.value)}
-                    required
-                  />
-                  {errors.hotelName && <div className="text-red-500">{errors.hotelName}</div>}
-                </div>
-                <div>
-                  <label htmlFor="location" className="block mb-2 text-lg font-medium text-left text-white">
-                    Location
-                  </label>
-                  <input
-                    type="text"
-                    id="location"
-                    className="input-field"
-                    value={location}
-                    onChange={(e) => setLocation(e.target.value)}
-                    required
-                  />
-                  {errors.location && <div className="text-red-500">{errors.location}</div>}
-                </div>
-                <div>
-                  <label htmlFor="image" className="block mb-2 text-lg font-medium text-left text-white">
-                    Hotel Image
-                  </label>
-                  <input
-                    type="file"
-                    id="image"
-                    className="input-field"
-                    onChange={handleImageChange}
-                    required
-                  />
-                  {errors.image && <div className="text-red-500">{errors.image}</div>}
-                </div>
-              </div>
-              <button type="submit" className="submit-button">
-                Create Hotel
-              </button>
-            </form>
-          </div>
+        try {
+            await createHotel(formData);
+            alert('Hotel successfully created!');
+        } catch (error) {
+            console.error('Failed to create hotel:', error);
+            alert('Failed to create hotel. Check the console for more information.');
+        }
+    };
+
+    return (
+        <div className="App">
+            <NavBar />
+            <div className="hotel-create-form">
+                <form onSubmit={handleSubmit} className="form-two-columns">
+                    {Object.entries(hotelData).map(([key, value]) => (
+                        <div key={key} className={`form-group ${key === 'address' || key === 'description' ? 'full-width' : ''}`}>
+                            <label htmlFor={key}>{key.charAt(0).toUpperCase() + key.slice(1)}:</label>
+                            <input
+                                type={key === 'price' || key === 'latitude' || key === 'longitude' || key === 'stars' ? 'number' : key === 'image' ? 'file' : 'text'}
+                                id={key}
+                                name={key}
+                                value={key !== 'image' ? value : undefined}
+                                onChange={key === 'image' ? handleFileChange : handleChange}
+                                className={`form-control ${errors[key] ? 'is-invalid' : ''}`}
+                            />
+                            {errors[key] && <div className="error-message">{errors[key]}</div>}
+                        </div>
+                    ))}
+                    <button type="submit" className="submit-button">Create Hotel</button>
+                </form>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default HotelCreate;
