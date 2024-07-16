@@ -52,4 +52,13 @@ public class Hotel {
 
     @Column
     private String imageUrl;
+
+    @Column(name = "features", length = 1000)
+    private String features;
+
+    @Column(name = "price")
+    private Double price;
+
+    @Column(name = "stars")
+    private Integer stars;
 }
