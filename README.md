@@ -1,172 +1,77 @@
 # Hotel Booking System
+This repository contains the source code for a comprehensive Hotel Booking System, including both backend and frontend components. The system allows users to book hotel rooms and manage bookings, while also providing administrative capabilities for hotel management.
 
-This project is a Hotel Booking System that consists of a frontend built with React and a backend built with Spring Boot.
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js
-- npm
-- Java
-- Maven
-
-### Setting Up the Backend
-
-1. Navigate to the backend directory:
-
-    
-    cd backend/bookingService/bookingService
-    
-
-2. Build the project using Maven:
-
-   
-    ./mvnw clean install
-  
-
-3. Run the Spring Boot application:
-
-    
-    ./mvnw spring-boot:run
-    
-
-### Setting Up the Frontend
-
-1. Navigate to the frontend directory:
-
-    
-    cd frontend/hotel-booking-system
-    
-
-2. Install the dependencies:
-
-  
-    npm install
-    
-
-3. Start the development server:
-
-    
-    npm start
-    
-
-### Building the Frontend
-
-To create a production build of the frontend, run:
-
-npm run build
-
-
-Running Tests
-
-To run tests for the frontend, use:
-
-npm test
-Hotel Booking System
-This project is a Hotel Booking System with a frontend built using React and a backend built using Spring Boot.
-
-Table of Contents
-Getting Started
-Prerequisites
-Setting Up the Backend
-Setting Up the Frontend
-Building the Frontend
-Running Tests
-API Endpoints
-Technologies Used
-Contributing
+## Table of Contents
+Project Structure
+Backend
+Key Files and Directories
+Setup
+Frontend
+Key Files and Directories
+Setup
+Version Control
 License
-Getting Started
-These instructions will guide you through setting up the project on your local machine for development and testing purposes.
+Contributing
+Contact
+Project Structure
 
-Prerequisites
-Before you begin, make sure you have the following software installed:
+##Backend
+The backend is a Java-based service managed with Maven. It provides the core functionality for managing hotel bookings, user authentication, and other related services.
 
-Node.js
-npm
-Java
-Maven
-Setting Up the Backend
-Navigate to the backend directory:
+## Key Files and Directories
+- pom.xml: Maven configuration file that manages dependencies and project build.
+-src/: Contains the Java source code for the backend service, including controllers, services, repositories, and domain models.
 
-sh
-Copy code
+## Setup
+To set up and run the backend service:
+
+## Navigate to the backend directory:
 cd backend/bookingService/bookingService
-Build the project using Maven:
 
-sh
-Copy code
+## Build the project using Maven:
+
+
 ./mvnw clean install
-Run the Spring Boot application:
 
-sh
-Copy code
+## Run the backend service:
+
+
 ./mvnw spring-boot:run
-The backend will be available at http://localhost:8080.
+The backend will start on http://localhost:8080 by default.
 
-Setting Up the Frontend
-Navigate to the frontend directory:
 
-sh
-Copy code
+## Frontend
+The frontend is a JavaScript-based application managed with Node.js and styled using Tailwind CSS. It provides a user-friendly interface for booking hotels, viewing reservations, and managing user accounts.
+
+## Key Files and Directories
+package.json: Node.js configuration file that manages dependencies and scripts.
+public/: Contains static assets such as images and fonts.
+src/: Contains the JavaScript source code for the frontend application, including React components, hooks, and utility functions.
+tailwind.config.js: Configuration file for Tailwind CSS, allowing customization of the design system.
+
+
+
+## Setup
+To set up and run the frontend application:
+
+## Navigate to the frontend directory:
+
 cd frontend/hotel-booking-system
 Install the dependencies:
 
-sh
-Copy code
+
 npm install
 Start the development server:
 
-sh
-Copy code
+
 npm start
-The frontend will be available at http://localhost:3000.
+The frontend will start on http://localhost:3000 by default.
 
-Building the Frontend
-To create a production build of the frontend, run:
+## Version Control
+This project uses Git for version control. Ensure that your changes do not include unnecessary files and directories by adhering to the .gitignore files present in the repository.
 
-sh
-Copy code
-npm run build
-This will create an optimized production build in the build directory.
+## License
+This project is licensed under the MIT License. Please refer to the LICENSE file for details.
 
-Running Tests
-To run tests for the frontend, use:
-
-sh
-Copy code
-npm test
-This will execute the test suite and provide feedback on the application's functionality.
-
-API Endpoints
-The backend provides the following API endpoints:
-
-GET /hotels: Retrieve all hotels
-POST /hotels: Create a new hotel
-GET /hotels/{id}: Retrieve a hotel by ID
-PUT /hotels/{id}: Update a hotel by ID
-DELETE /hotels/{id}: Delete a hotel by ID
-GET /hotels/download/{fileName}: Download a file
-Each endpoint accepts and returns data in JSON format.
-
-Technologies Used
-Frontend: React, JavaScript, HTML, CSS
-Backend: Spring Boot, Java
-Database: MySQL (or any preferred database)
-Build Tools: Maven, npm
-Version Control: Git
-Contributing
-If you would like to contribute to this project, please fork the repository and submit a pull request. Contributions are welcome!
-
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
-API Endpoints
-The backend provides the following API endpoints:
-
-GET /hotels - Retrieve all hotels
-POST /hotels - Create a new hotel
-GET /hotels/{id} - Retrieve a hotel by ID
-PUT /hotels/{id} - Update a hotel by ID
-DELETE /hotels/{id} - Delete a hotel by ID
-GET /hotels/download/{fileName} - Download a file
+## Contributing
+Contributions are welcome! If you'd like to contribute, please fork the repository, create a new branch, and submit a pull request. Make sure to provide a clear description of your changes and the problem you're solving.
