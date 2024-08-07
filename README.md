@@ -1,70 +1,172 @@
-# Getting Started with Create React App
+# Hotel Booking System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a Hotel Booking System that consists of a frontend built with React and a backend built with Spring Boot.
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+### Prerequisites
 
-### `npm start`
+- Node.js
+- npm
+- Java
+- Maven
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Setting Up the Backend
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Navigate to the backend directory:
 
-### `npm test`
+    
+    cd backend/bookingService/bookingService
+    
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Build the project using Maven:
 
-### `npm run build`
+   
+    ./mvnw clean install
+  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. Run the Spring Boot application:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    
+    ./mvnw spring-boot:run
+    
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Setting Up the Frontend
 
-### `npm run eject`
+1. Navigate to the frontend directory:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    
+    cd frontend/hotel-booking-system
+    
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Install the dependencies:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+  
+    npm install
+    
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. Start the development server:
 
-## Learn More
+    
+    npm start
+    
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Building the Frontend
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To create a production build of the frontend, run:
 
-### Code Splitting
+npm run build
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+Running Tests
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+To run tests for the frontend, use:
 
-### Making a Progressive Web App
+npm test
+Hotel Booking System
+This project is a Hotel Booking System with a frontend built using React and a backend built using Spring Boot.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Table of Contents
+Getting Started
+Prerequisites
+Setting Up the Backend
+Setting Up the Frontend
+Building the Frontend
+Running Tests
+API Endpoints
+Technologies Used
+Contributing
+License
+Getting Started
+These instructions will guide you through setting up the project on your local machine for development and testing purposes.
 
-### Advanced Configuration
+Prerequisites
+Before you begin, make sure you have the following software installed:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Node.js
+npm
+Java
+Maven
+Setting Up the Backend
+Navigate to the backend directory:
 
-### Deployment
+sh
+Copy code
+cd backend/bookingService/bookingService
+Build the project using Maven:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+sh
+Copy code
+./mvnw clean install
+Run the Spring Boot application:
 
-### `npm run build` fails to minify
+sh
+Copy code
+./mvnw spring-boot:run
+The backend will be available at http://localhost:8080.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Setting Up the Frontend
+Navigate to the frontend directory:
+
+sh
+Copy code
+cd frontend/hotel-booking-system
+Install the dependencies:
+
+sh
+Copy code
+npm install
+Start the development server:
+
+sh
+Copy code
+npm start
+The frontend will be available at http://localhost:3000.
+
+Building the Frontend
+To create a production build of the frontend, run:
+
+sh
+Copy code
+npm run build
+This will create an optimized production build in the build directory.
+
+Running Tests
+To run tests for the frontend, use:
+
+sh
+Copy code
+npm test
+This will execute the test suite and provide feedback on the application's functionality.
+
+API Endpoints
+The backend provides the following API endpoints:
+
+GET /hotels: Retrieve all hotels
+POST /hotels: Create a new hotel
+GET /hotels/{id}: Retrieve a hotel by ID
+PUT /hotels/{id}: Update a hotel by ID
+DELETE /hotels/{id}: Delete a hotel by ID
+GET /hotels/download/{fileName}: Download a file
+Each endpoint accepts and returns data in JSON format.
+
+Technologies Used
+Frontend: React, JavaScript, HTML, CSS
+Backend: Spring Boot, Java
+Database: MySQL (or any preferred database)
+Build Tools: Maven, npm
+Version Control: Git
+Contributing
+If you would like to contribute to this project, please fork the repository and submit a pull request. Contributions are welcome!
+
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
+API Endpoints
+The backend provides the following API endpoints:
+
+GET /hotels - Retrieve all hotels
+POST /hotels - Create a new hotel
+GET /hotels/{id} - Retrieve a hotel by ID
+PUT /hotels/{id} - Update a hotel by ID
+DELETE /hotels/{id} - Delete a hotel by ID
+GET /hotels/download/{fileName} - Download a file
